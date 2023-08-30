@@ -15,6 +15,16 @@
   background-color: darken({{ block.settings.button.button_color }}, 10%);
 }
 
+.icon-text svg #Vector{
+  fill: {{section.settings.fill_color}};
+  stroke: {{section.settings.fill_color}};
+
+
+}
+.icon-text svg #Vector_2{
+  stroke: {{section.settings.stroke_color}};
+  
+}
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -261,14 +271,15 @@
                 <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
                   {{ block.settings.text }}
                 </div>
-              {%- when 'icon-text' -%}
-                <div
-                  class="image-with-text__text icon-text rte {{ block.settings.text_style }}"
-                  {{ block.shopify_attributes }}
-                >
-                  {%- render 'icon-check' -%}
-                  {{ block.settings['icon-text'] }}
-                </div>
+                {%- when 'icon-text' -%}
+                  <div
+                    class="image-with-text__text icon-text rte {{ block.settings.text_style }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- render 'icon-check' -%}
+                    {{ block.settings['icon-text'] }}
+                  </div>
+                  
              {%- when 'button' -%}
                 {%- if block.settings.button_label != blank -%}
                   <a
@@ -532,8 +543,25 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Icon color"
+    },
+    {
+      "type": "color",
+      "label": "Check Icon Background Color",
+      "id": "fill_color",
+      "default": "#00A453"  
+    },
+    {
+      "type": "color",
+      "label": "Check Icon Color",
+      "id": "stroke_color",
+      "default": "#000000"  
     }
   ],
+  
   "blocks": [
     {
       "type": "heading",
@@ -673,7 +701,7 @@
             "type": "color",
             "label": "Button Color",
             "id": "button_color",
-            "default": "#000000"
+            "default": "#0F62FE"
         },
         {
             "type": "color",
